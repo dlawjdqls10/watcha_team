@@ -1,0 +1,79 @@
+{% load static %}
+<html>
+<head>
+	<title>왓챠 :: 오늘 영화도 부탁해!</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/WATCHA_CSS.css' %}">
+</head>
+<body>
+<nav>
+	<div class="payment-bar">
+		<div class="payment-bar_text">
+			[왓챠플레이 앱출시] 지금 다운로드하고, 첫달은 무료로 감상하세요!
+		</div>
+		<a class="payment-bar_button" href="#">감상하기</a>
+	</div>
+	<div class="header">
+		<ul class="nav_button">
+			<li class="logo">
+				<a href="#"><img src="https://d3sz5r0rl9fxuc.cloudfront.net/assets/bi/icon_40-a779704484985e4920effcf2089c560f4390b8a6f4449efde4c59f2c34b3bc04.png" width="30" height="30"></a>
+			</li>
+			<li class="nav_menu">
+				<a href="#">박스오피스</a>
+			</li>
+			<li class="nav_menu"><a href="#">추천영화</a></li>
+			<li class="nav_menu"><a href="#">평가늘리기</a></li>
+		</ul>
+		<form class="search">
+			<div class="input-wrapper">
+
+				<span id="search-icon"><img src="static/img/search-icon.png" style="width: 30px; height: 30px;"></span>
+				<input type="search" class="search-bar">
+			</div>
+		</form>
+		<div id="usermenu">
+			<div class="me">
+				<a class="name" href="#">
+					박지영
+					<img src="https://d3sz5r0rl9fxuc.cloudfront.net/assets/default/user/photo_file_name_small-bc8b334acec6a4e386249dedf9e763b5e6aff523fa85cc29211f22e6bed540df.jpg" width="30" height="30">
+				</a>
+			</div>
+		</div>
+	</div>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+<div class="footer">
+		<div class="wrapper">
+			<div class="upper">
+				<div class="name">WATCHA</div>
+				<div class="sns">
+					<a href="https://www.facebook.com/watcha.net" target="_blank" class="fb">페이스북</a>
+					<a href="https://twitter.com/watcha_app" target="_blank" class="twitter">트위터</a>
+					<a href="http://www.frograms.com/blog/" target="_blank" class="blog">블로그</a>
+				</div>
+			</div>
+
+
+			<div class="text">
+				<span class="star_icon"></span>
+				<p>409,397,599 개의 별점 평가가 쌓이고 있습니다.</p>
+			</div>
+
+			<div class="info">
+				<p>사업자명 (주식회사 왓챠) 사업자번호 (211-88-66013) Copyright © 2011–2018 by Watcha, Inc. All rights reserved</p>
+			</div>
+
+			<div class="legal_info">
+				왓챠 <a href="#">서비스 이용약관</a> | <a href="#"><b>개인정보 취급방침</b></a>
+			</div>
+		</div>
+
+	</div>
+
+
+<a class="ask" href="#"><img src="static/img/ask.png" width="39" height="39"></a>
+</body>
+</html>
