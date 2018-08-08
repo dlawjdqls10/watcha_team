@@ -1,0 +1,62 @@
+{% load static %}
+<html>
+<head>
+	<title>왓챠</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/WATCHA_CSS.css' %}">
+</head>
+<body>
+<div class="header">
+		<ul class="nav_button">
+		</ul>
+		<a class="logo" href="{% url 'main' %}"><img src="{% static 'img/logo.png' %}" width="30" height="30"></a>
+		<form class="search" action="{% url 'search' %}" method="GET">
+			<input type="search" class="search-bar" name="q" placeholder="작품, 제목, 배우, 감독을 검색해보세요">
+			<span id="search-icon"><img src="{% static 'img/search-icon.png' %}" style="width: 30px; height: 30px;"></span>
+		</form>
+		<div id="usermenu">
+			<div class="me">
+				<a class="name" href="#">
+					<img src="{% static 'img/profile.jpg' %}" width="30" height="30">
+				</a>
+			</div>
+		</div>
+</div>
+<div class="empty"></div>
+<div>
+  {% for item in items %}
+      <ul>
+          <div>{{ forloop. }}
+						<img src="{{item.image}}" alt="" width="110" height="150"> <p class="title">{{ item.title|safe }}</p> <span>{{ item.pubDate }}</span>-<span>{{ item.director }}</span>
+						<hr class="divider">
+          </div>
+      </ul>
+  {% endfor %}
+</div>
+
+
+<div class="footer">
+		<div class="wrapper">
+			<div class="upper">
+				<div class="name">WATCHA</div>
+				<div class="sns">
+					<a href="https://www.facebook.com/watcha.net" target="_blank" class="fb">페이스북</a>
+					<a href="https://twitter.com/watcha_app" target="_blank" class="twitter">트위터</a>
+					<a href="http://www.frograms.com/blog/" target="_blank" class="blog">블로그</a>
+				</div>
+			</div>
+			<div class="text">
+				<span class="star_icon"></span>
+				<p>409,397,599 개의 별점 평가가 쌓이고 있습니다.</p>
+			</div>
+			<div class="info">
+				<p>사업자명 (주식회사 왓챠) 사업자번호 (211-88-66013) Copyright © 2011–2018 by Watcha, Inc. All rights reserved</p>
+			</div>
+			<div class="legal_info">
+				왓챠 <a href="#">서비스 이용약관</a> | <a href="#"><b>개인정보 취급방침</b></a>
+			</div>
+		</div>
+	</div>
+<a class="ask" href="#"><img src="static/img/ask.png" width="39" height="39"></a>
+</body>
+</html>

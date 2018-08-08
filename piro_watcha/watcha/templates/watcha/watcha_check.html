@@ -1,20 +1,86 @@
-<h1>{{ movie.title }}</h1>
-<h1>{{ movie.content }}</h1>
-<h1>{{ movie.running }}</h1>
-<h1>{{ movie.age }}</h1>
-<h1>{{ movie.genre_set }}</h1>
-<h1>{{ movie.rank }}</h1>
+{% load static %}
+<html>
+<head>
+	<title>왓챠 :: 오늘 영화도 부탁해!</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/WATCHA_CSS.css' %}">
+</head>
+<body>
+<nav>
+	</div>
+	<div class="header">
+    <li class="logo">
+      <a href="{% url 'main' %}"><img src="{% static 'img/logo.png' %}" width="30" height="30"></a>
+    </li>
+		<form class="search">
+			<div class="input-wrapper">
 
+				<span id="search-icon"><img src="{% static 'img/search-icon.png' %}" style="width: 30px; height: 30px;"></span>
+				<input type="search" class="search-bar">
+			</div>
+		</form>
+		<div id="usermenu">
+			<div class="me">
+				<a class="name" href="#">
+					<img src="{% static 'img/profile.jpg' %}" width="30" height="30">
+				</a>
+			</div>
+		</div>
+	</div>
+</nav>
 
+<div class="post">
+    {% if movie.poster %}
+      <img class="poster" src="{{ movie.poster }}">
+    {% endif %}
+    <h1>영화제목:{{ movie.title }}</h1>
+    <h1>줄거리</h1>
+    <p>{{ movie.content|linebreaksbr }}</p>
+    {% if movie.running %}
+       <p>러닝타임:{{ movie.running }}</p>
+    {% endif %}
+    {% if movie.age %}
+       <p>연령제한:{{ movie.age }}</p>
+    {% endif %}
+    {% if movie.reservationRate %}
+      <p>예매율:{{ movie.reservationRate }}</p>
+    {% endif %}
+    {% if movie.genre_set %}
+         <p>장르:{{ movie.genre_set }}</p>
+    {% endif %}
+    {% if movie.cast_set %}
+       <p>주연:{{ movie.cast_set }}</p>
+    {% endif %}
+    {% if movie.country_set %}
+       <p>나라:{{ movie.country_set }}</p>
+    {% endif %}
+    {% if movie.director_set %}
+       <p>감독:{{ movie.diretor_set }}</p>
+    {% endif %}
+</div>
 
-{#content = models.TextField(verbose_name='줄거리')#}
-{#    created_date = models.DateTimeField(default=timezone.now)#}
-{#    published_date = models.DateTimeField(auto_now=True, blank=True, null=True)#}
-{#    running = models.CharField(max_length=10, verbose_name='러닝타임', blank=True, null=True)#}
-{#    age = models.CharField(max_length=10, verbose_name='나이제한', blank=True, null=True)#}
-{#    reservationRate = models.CharField(max_length=10, verbose_name='예매율', blank=True, null=True)#}
-{#    genre_set = models.ManyToManyField('Genre', blank=True, null=True)#}
-{#    cast_set = models.ManyToManyField('Cast', blank=True, null=True)#}
-{#    director_set = models.ManyToManyField('Director', blank=True, null=True)#}
-{#    country_set = models.ManyToManyField('Country', blank=True, null=True)#}
-{#    rank = models.CharField(max_length=20, verbose_name='순위', blank=True, null=True)#}
+<div class="footer">
+		<div class="wrapper">
+			<div class="upper">
+				<div class="name">WATCHA</div>
+				<div class="sns">
+					<a href="https://www.facebook.com/watcha.net" target="_blank" class="fb">페이스북</a>
+					<a href="https://twitter.com/watcha_app" target="_blank" class="twitter">트위터</a>
+					<a href="http://www.frograms.com/blog/" target="_blank" class="blog">블로그</a>
+				</div>
+			</div>
+			<div class="text">
+				<span class="star_icon"></span>
+				<p>409,397,599 개의 별점 평가가 쌓이고 있습니다.</p>
+			</div>
+			<div class="info">
+				<p>사업자명 (주식회사 왓챠) 사업자번호 (211-88-66013) Copyright © 2011–2018 by Watcha, Inc. All rights reserved</p>
+			</div>
+			<div class="legal_info">
+				왓챠 <a href="#">서비스 이용약관</a> | <a href="#"><b>개인정보 취급방침</b></a>
+			</div>
+		</div>
+	</div>
+<a class="ask" href="#"><img src="static/img/ask.png" width="39" height="39"></a>
+</body>
+</html>

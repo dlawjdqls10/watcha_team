@@ -16,6 +16,7 @@ class Movie(models.Model):
     director_set = models.ManyToManyField('Director', blank=True, null=True)
     country_set = models.ManyToManyField('Country', blank=True, null=True)
     rank = models.CharField(max_length=20, verbose_name='순위', blank=True, null=True)
+    poster = models.CharField(max_length=200, verbose_name='포스터', blank=True, null=True)
 
 
 class Genre(models.Model):
