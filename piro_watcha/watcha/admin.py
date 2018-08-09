@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Movie, Genre, Country, Cast, Director
+from .models import Movie, Genre, Country, Cast, Director, Comment
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
@@ -22,3 +22,7 @@ class CastAdmin(admin.ModelAdmin):
 @admin.register(Director)
 class DirectorAdmin(admin.ModelAdmin):
     list_display = ['name']
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    pass

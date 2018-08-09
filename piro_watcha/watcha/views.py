@@ -1,7 +1,10 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Movie
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Movie, Comment
+from .forms import CommentForm
 import urllib.request
 import json
+
+
 
 # Create your views here.
 def main(request):
@@ -34,3 +37,19 @@ def search(request):
                 return render(request, 'watcha/watcha_search.html', {'items': items})
             else:
                 return render(request, 'watcha/watcha_no_search.html')
+
+
+def comment_new(request):
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment = Comment()
+            comment.comment = form.cleaned_data['comment']
+            comment.save()
+            return redirect('/watcha/')
+    else:
+        form = CommentForm()
+    return render(request, 'watcha/watcha_comment.html', {
+        'form': form,
+    })
+

@@ -19,6 +19,10 @@ class Movie(models.Model):
     poster = models.CharField(max_length=200, verbose_name='포스터', blank=True, null=True)
 
 
+class Comment(models.Model):
+    comment = models.CharField(max_length=200, verbose_name='댓글')
+
+
 class Genre(models.Model):
     name = models.CharField(max_length=10)
 
