@@ -16,7 +16,7 @@
 		</form>
 		<div id="usermenu">
 			<div class="me">
-				<a class="name" href="#">
+				<a class="name" href="http://localhost:8000/watcha/profile/">
 					<img src="{% static 'img/profile.jpg' %}" width="30" height="30">
 				</a>
 			</div>
@@ -27,7 +27,7 @@
   {% for item in items %}
       <ul>
           <div>{{ forloop. }}
-						<img src="{{item.image}}" alt="" width="110" height="150"> <p class="title">{{ item.title|safe }}</p> <span>{{ item.pubDate }}</span>-<span>{{ item.director }}</span>
+            <a href="http://localhost:8000/watcha/comment/"><img src="{{item.image}}" alt="" width="110" height="150"> <p class="title"></a>{{ item.title|safe }}</p> <span>{{ item.pubDate }}</span>-<span>{{ item.director }}</span>
 						<hr class="divider">
           </div>
       </ul>

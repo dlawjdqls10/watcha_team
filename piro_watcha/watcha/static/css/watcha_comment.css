@@ -1,0 +1,12 @@
+.title {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 35px;
+}
+
+.table {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
