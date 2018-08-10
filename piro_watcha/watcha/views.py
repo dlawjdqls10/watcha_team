@@ -45,6 +45,7 @@ def comment_new(request):
         if form.is_valid():
             comment = Comment()
             comment.comment = form.cleaned_data['comment']
+            # comment.movie = form.dleaned_data['movie']
             comment.save()
             return redirect('/watcha/')
     else:

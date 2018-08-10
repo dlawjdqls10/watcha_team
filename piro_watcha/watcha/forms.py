@@ -8,3 +8,4 @@ def min_length_3_validator(value):
 
 class CommentForm(forms.Form):
     comment = forms.CharField(validators=[min_length_3_validator])
+    # movie = forms.CharField()
