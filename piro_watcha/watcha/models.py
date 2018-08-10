@@ -19,6 +19,7 @@ class Movie(models.Model):
     poster = models.CharField(max_length=200, verbose_name='포스터', blank=True, null=True)
 
 class Comment(models.Model):
+
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, blank=True, null=True)
     comment = models.CharField(max_length=200, verbose_name='댓글', blank=True, null=True)
 
