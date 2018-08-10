@@ -54,3 +54,15 @@ def comment_new(request):
         'form': form,
     })
 
+def main(request):
+    return render(request, 'watcha/watcha_main.html')
+
+def profile(request):
+    return render(request, 'watcha/watcha_profile.html')
+
+def flavor(request):
+    return render(request, 'watcha/watcha_flavor.html')
+
+
+
+

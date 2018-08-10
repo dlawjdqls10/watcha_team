@@ -1,5 +1,8 @@
+{% load static %}
 <form action="" method="post">
   {% csrf_token %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/watcha_comment.css' %}">
+  <h1>이 작품에대한 생각을 자유롭게 남겨주세요.</h1>
   <table>
     {{ form.as_table }}
   </table>
