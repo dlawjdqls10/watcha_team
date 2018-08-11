@@ -1,2 +1,4 @@
 2018-08-08 영화 API 가져오기
 2018-08-09 profile front 완성
+2018-08-10 front 합치기/ naver api 기능 / comment (foreign key 이용하려다 실패)
+2018-08-11 login / logout 초안
