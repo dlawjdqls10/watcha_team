@@ -3,30 +3,34 @@ from .models import Movie, Comment
 from .forms import CommentForm
 import urllib.request
 import json
-
+from django.views import generic
+from django.contrib.auth import authenticate, login
+from django.views.generic import View
+from .forms import UserForm, LoginForm
+from django.http import HttpResponse
 
 
 # Create your views here.
 def main(request):
-    return render(request, 'watcha/watcha_main.html',)
+    return render(request, 'watcha/watcha_main.html', )
 
 
 def check(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     return render(request, 'watcha/watcha_check.html', {'movie': movie})
 
-def search(request):
 
+def search(request):
     if request.method == 'GET':
         client_id = "Qecl29vHRGgGNd4hjiov"
         client_secret = "XGZwdGHHfy"
 
         q = request.GET.get('q')
         encText = urllib.parse.quote("{}".format(q))
-        url = "https://openapi.naver.com/v1/search/movie?query=" + encText + "&display=10"# json 결과
+        url = "https://openapi.naver.com/v1/search/movie?query=" + encText + "&display=10"  # json 결과
         movie_request = urllib.request.Request(url)
-        movie_request.add_header("X-Naver-Client-Id",client_id)
-        movie_request.add_header("X-Naver-Client-Secret",client_secret)
+        movie_request.add_header("X-Naver-Client-Id", client_id)
+        movie_request.add_header("X-Naver-Client-Secret", client_secret)
         response = urllib.request.urlopen(movie_request)
         rescode = response.getcode()
         if (rescode == 200):
@@ -45,7 +49,7 @@ def comment_new(request):
         if form.is_valid():
             comment = Comment()
             comment.comment = form.cleaned_data['comment']
-            # comment.movie_id = form.cleaned_data['movie']
+            comment.movie = Movie.objects.get(pk=int(form.cleaned_data['movie']))
             comment.save()
             return redirect('/watcha/')
     else:
@@ -54,15 +58,68 @@ def comment_new(request):
         'form': form,
     })
 
+
 def main(request):
     return render(request, 'watcha/watcha_main.html')
 
+
 def profile(request):
     return render(request, 'watcha/watcha_profile.html')
+
 
 def flavor(request):
     return render(request, 'watcha/watcha_flavor.html')
 
 
+def loginpage(request):
+    return render(request, 'watcha/watcha_login.html')
 
 
+def newaccount(request):
+    return render(request, 'watcha/watcha_register.html')
+
+
+class UserFormView(View):
+    form_class = UserForm
+    templates_name = 'watcha/watcha_register.html'
+
+    def get(self, request):
+        form = self.form_class(None)
+        return render(request, self.templates_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+
+            user = form.save(commit=False)
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user.set_password(password)
+            user.save()
+
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+
+                if user.is_active:
+                    login(request, user)  # login
+                    return redirect('watcha:main')
+
+        return render(request, self.template_name, {'form': form})
+
+
+def loginpage(request):
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('watcha:main')
+        else:
+            return HttpResponse('로그인 실패. 다시 시도 해보세요.')
+    else:
+        form = LoginForm()
+        return render(request, 'watcha/watcha_login.html', {'form': form})

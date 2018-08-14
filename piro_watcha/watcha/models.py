@@ -23,6 +23,9 @@ class Comment(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, blank=True, null=True)
     comment = models.CharField(max_length=200, verbose_name='댓글', blank=True, null=True)
 
+    def __str__(self):
+        return self.comment
+
 class Genre(models.Model):
     name = models.CharField(max_length=10)
 

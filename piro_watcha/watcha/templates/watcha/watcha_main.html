@@ -16,14 +16,10 @@
 						<div class="Row">
 							<ul class="NavUl A B">
 								<li class="TopNavTabList">
-									<a title="User's page" href="http://localhost:8000/watcha/profile/">
-										<div class="ProfilePhoto C D">
-											<div class="ProfilePhotoImg"></div>
-											<div class="ImgContainer">
-												<img class="defaultImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgZmlsbD0iI0UwRTBFMCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNCAyMS4yNzhhOC41NyA4LjU3IDAgMCAxLTguNTcxLTguNTdBOC41NzEgOC41NzEgMCAxIDEgMjQgMjEuMjc3TTQzLjUxOSA0My44NjVjLjU2NCAwIDEuMDMzLS40NjggMS4wMDMtMS4wMzFDNDMuOTYzIDMyLjQyNCAzNC45ODkgMjQuMTUgMjQgMjQuMTVjLTEwLjk4OSAwLTE5Ljk2MyA4LjI3NC0yMC41MjIgMTguNjgzLS4wMy41NjMuNDM5IDEuMDMgMS4wMDMgMS4wM2gzOS4wMzh6Ii8+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K" alt="User의 사진">
-											</div>
-										</div>
-									</a>
+                  <div class="account">
+                    <a href="{% url 'watcha:login' %}"><span class="login">로그인</span></a>
+                    <a href="{% url 'watcha:newaccount' %}"><span class="register">회원가입</span></a>
+                  </div>
 								</li>
 							</ul>
 						</div>
