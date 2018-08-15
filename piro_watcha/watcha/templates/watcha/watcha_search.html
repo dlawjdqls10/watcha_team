@@ -2,32 +2,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>login</title>
+  <title>왓챠</title>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="{% static 'css/watcha_search.css' %}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 <body>
-<div class="header">
-  
+<div class="header">  
+  <a href="{% url 'watcha:main' %}"><div class="logo">WATCHA</div></a>
+
+  <div class="header__search">
+    <form class="search" action="{% url 'watcha:search' %}" method="GET">
+  <span class="search__img"><i class="fas fa-search"></i></span>
+    <input type="search" class="search-bar" name="q" placeholder="작품, 제목, 배우, 감독을 검색해보세요.">
+    </form>
+  </div>
+
+  <a href="{% url 'watcha:profile' %}"><div class="header__user"><i class="fas fa-user-circle"></i></div></a>
+
 </div>
 
 
 <div class="content">
-<form class="search" action="{% url 'watcha:search' %}" method="GET">
-  <input type="search" class="search-bar" name="q" placeholder="작품, 제목, 배우, 감독을 검색해보세요">
-  <span id="search-icon"><img src="{% static 'img/search-icon.png' %}" style="width: 30px; height: 30px;"></span>
-</form>
-
-<div>
-  {% for item in items %}
-    <ul>
-      <div>{{ forloop. }}
-        <a href="http://localhost:8000/watcha/comment/"><img src="{{ item.image }}" alt="" width="110" height="150">
-          <p class="title">{{ item.title|safe }}</p></a>
-        <span>{{ item.pubDate }}</span>-<span>{{ item.director }}</span>
-        <hr class="divider">
-      </div>
-    </ul>
-  {% endfor %}
-</div>
+<div class="content__message">상위 검색 결과</div>
+  <div class="content__pack">
+    {% for item in items %}
+        <div class="content__movie">
+          <div class="content__movie__img">
+            {{ forloop. }}
+            <a href="http://localhost:8000/watcha/comment/">
+              <img src="{{ item.image }}" alt="" width="130" height="180">
+            </a>
+          </div>
+          <div class="content__movie__info">
+          <div class="content__movie__info__title">
+            {{ item.title|safe }}
+          </div>
+          <div class="content__movie__info__info">
+            {{ item.pubDate }} - {{ item.director }}
+          </div>
+          </div>
+        </div>
+    {% endfor %}
+    </div>
+    추가내용  
 </div>
