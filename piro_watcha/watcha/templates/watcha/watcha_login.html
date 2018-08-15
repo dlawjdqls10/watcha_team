@@ -2,45 +2,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>login</title>
-<link rel="stylesheet" type="text/css" href="{% static 'css/watcha_login.css' %}">
+  <title>login</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/watcha_login.css' %}">
 </head>
 <body>
 <div class="flex">
-<div class="border">
-	<div class="border__title">WATCHA</div>
-	<div class="border__login">로그인</div>
-	<div class="input">
+  <div class="border">
+    <div class="border__title">WATCHA</div>
+    <div class="border__login">로그인</div>
+    <div class="input">
 
-    <form action="" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      <div class="input__ID">
-        {{ form.username }}
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input__ID">
+          {{ form.username }}
+        </div>
+        <div class="input__PW">
+          {{ form.password }}
+        </div>
+        <div class="input__submit">
+          <button type='submit'> 로그인</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="lost_and_found">
+      <div class="find__PW">
+        <a href="#"><span>비밀번호를 잊어버리셨나요?</span></a>
       </div>
-      <div class="input__PW">
-        {{ form.password }}
+      <div class="no__ID">
+        계정이 없으신가요? <a href="#"><span>회원가입</span></a>
       </div>
-      <div class="input__submit">
-        <button type='submit'> 로그인 </button>
-      </div>
-    </form>
+    </div>
+    <div class="footer">
+      <div class="line"></div>
+    </div>
+    <div class="input__submitFB">
+      <button type='submit'> FACEBOOK 으로 로그인</button>
+    </div>
   </div>
-
-	<div class="lost_and_found">
-		<div class="find__PW">
-			<a href="#"><span>비밀번호를 잊어버리셨나요?</span></a>
-		</div>
-		<div class="no__ID">
-			계정이 없으신가요? <a href="#"><span>회원가입</span></a>
-		</div>
-	</div>
-	<div class="footer">
-	<div class="line"></div>	
-	</div>
-	<div class="input__submitFB">
-		<button type='submit'> FACEBOOK 으로 로그인 </button>
-	</div>
-</div>
 </div>
 </body>
 </html>
