@@ -33,7 +33,7 @@ body {
 	margin-top: 16px;
 }
 
-.haeder__search {
+.header__search {
 	display: inline-block;
 	text-align: center;	
 	height: 70px;
@@ -110,3 +110,11 @@ body {
 	color: gray;
 }
 
+.no__content {
+	padding-top:80px;
+	padding-left: 15px;
+	padding-right: 15px;
+	height: 1500px;
+	text-align: center;
+	color: gray;
+}
