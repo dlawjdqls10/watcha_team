@@ -71,6 +71,11 @@ body {
 	height: 1500px;
 }
 
+.content__pack__high {
+	border-bottom: 1px solid #F5F5F5;
+	height: 350px;
+}
+
 .content__pack {
 	border-bottom: 1px solid #F5F5F5;
 	height: 1000px;

@@ -49,14 +49,11 @@
                 <div class="MaxWidthGrid">
                   <div class="IndexPageHome">
                     <div class="HomeSearrchInput">
-                      <form>
-                        <a href="http://localhost:8000/watcha/search/">
-                          <div class="SearchBlock">
-                            <input type="search" class="searchinput" id="searchbar" name="search" value label="검색"
-                                   placeholder="작품, 제목, 배우, 감독을 검색해보세요." autocomplete="off">
-                          </div>
-                        </a>
-                      </form>
+											<form class="search" action="{% url 'watcha:search' %}" method="GET">
+												<div class="SearchBlock">
+													<input type="search" class="searchinput" id="searchbar" name="q" value label="검색" placeholder="작품, 제목, 배우, 감독을 검색해보세요." autocomplete="off">
+												</div>
+											</form>
                     </div>
                     <section class="Guide">
                       <div class="Grid">
