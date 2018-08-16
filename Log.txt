@@ -5,7 +5,10 @@
 2018-08-13 login/회원가입 front 완성
 2018-08-14 login/회원가입 로직짜고 구현
 2018-08-15 search 부분 프론트 예쁘게 만들기/ login 후 프로필에 username 띄우기
+2018-08-16 logout 구현/ main,profile 에서 logout 하기/ profile page 에서 username 보여주기 / profile 페이지 검색창 예쁘게하기
 
 
 
-main 페이지에서 바로 검색 가능하게! (클릭하면 search 페이지로 안가고)/ main 회원가입 부분 margin 수정하기
+main 페이지에서 바로 검색 가능하게! (클릭하면 search 페이지로 안가고)/
+ main 회원가입 부분 margin 수정하기/
+자바스크립트 검색창 만들기 (트렌드만 쓰게)
