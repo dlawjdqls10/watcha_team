@@ -24,7 +24,25 @@
 
 
 <div class="content">
-<div class="content__message">상위 검색 결과</div>
+  <div class="content__message">상위 검색 결과</div>
+  <div class="content__pack__high">
+          <div class="content__movie">
+            <div class="content__movie__img">
+              <a href="http://localhost:8000/watcha/comment/">
+                <img src="{{ high_item.image }}" alt="" width="130" height="180">
+              </a>
+            </div>
+          <div class="content__movie__info">
+            <div class="content__movie__info__title">
+              {{ high_item.title|safe }}
+            </div>
+            <div class="content__movie__info__info">
+              {{ high_item.pubDate }} - {{ high_item.director }}
+            </div>
+          </div>
+        </div>
+    </div>
+  <div class="content__message">영화</div>
   <div class="content__pack">
     {% for item in items %}
         <div class="content__movie">
