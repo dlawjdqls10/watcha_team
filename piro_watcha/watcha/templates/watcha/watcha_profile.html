@@ -15,12 +15,12 @@
 		<div class="nav__watcha">
 			WATCHA
 		</div></a>
-		<div class="nav__watcha__input">
-      <a href="http://localhost:8000/watcha/search/">
-			<div class="mag"><i class="fas fa-search"></i></div>
-      </a>
-			<input type="text" name="" placeholder="작품 제목, 배우, 감독을 검색해보세요.">
-		</div>
+    <form class="search" action="{% url 'watcha:search' %}" method="GET">
+			<div class="header__search">
+  		<span class="search__img"><i class="fas fa-search"></i></span>
+    <input type="search" class="search-bar" name="q" placeholder="작품, 제목, 배우, 감독을 검색해보세요.">
+			</div>
+    </form>
 		<a href="{% url 'watcha:logout_user' %}"><div class="logout">logout</div></a>
 	</div>
 
