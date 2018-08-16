@@ -5,12 +5,40 @@ html{
 
 a {
 	text-decoration: none;
-	color: 545454;
+	color: white;
 }
 
 body{
 	margin: 0;
 }
+
+
+.welcomeuser {
+	margin-top: 15px;
+	font-size: 13px;
+}
+
+.welcomeuser i {
+	font-size: 25px;
+	margin-right: 10px;
+}
+
+.userlogout {
+	font-size: 17px;
+	color: white;
+	font-weight: 900;
+	background-color: #ff2f6e;
+	border-radius: 10px;
+	padding: 1px;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-top: 4px;
+	padding-bottom: 8px;
+	margin-right: 10px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
 
 .NavContainer{
 	position: relative;
@@ -570,7 +598,6 @@ body{
 }
 
 .register {
-	position: relative;
 	background-color: #ff2f6e;
 	color: white;
 	font-weight: 900;
@@ -578,5 +605,6 @@ body{
 	left: 12px;
 	border-radius: 5px;
 	padding: 2px;
+	margin-left: 5px;
 	
 }

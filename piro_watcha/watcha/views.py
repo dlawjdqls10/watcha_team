@@ -5,6 +5,7 @@ import urllib.request
 import json
 from django.views import generic
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 from django.views.generic import View
 from .forms import UserForm, LoginForm
 from django.http import HttpResponse
@@ -71,9 +72,6 @@ def flavor(request):
     return render(request, 'watcha/watcha_flavor.html')
 
 
-def loginpage(request):
-    return render(request, 'watcha/watcha_login.html')
-
 
 def newaccount(request):
     return render(request, 'watcha/watcha_register.html')
@@ -123,3 +121,13 @@ def loginpage(request):
     else:
         form = LoginForm()
         return render(request, 'watcha/watcha_login.html', {'form': form})
+
+
+def logout_user(request):
+    logout(request)
+    form = UserForm(request.POST or None)
+    context = {
+        "form": form,
+    }
+    return render(request, 'watcha/watcha_main.html', context)
+
