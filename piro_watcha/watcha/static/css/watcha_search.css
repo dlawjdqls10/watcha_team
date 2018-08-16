@@ -33,7 +33,7 @@ body {
 	margin-top: 16px;
 }
 
-.haeder__search {
+.header__search {
 	display: inline-block;
 	text-align: center;	
 	height: 70px;
@@ -69,6 +69,10 @@ body {
 	padding-left: 15px;
 	padding-right: 15px;
 	height: 1500px;
+}
+.content__pack__high{
+	border-bottom: 1px solid #F5F5F5;
+	height: 350px;
 }
 
 .content__pack {

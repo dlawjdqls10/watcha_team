@@ -38,7 +38,8 @@ def search(request):
             result = json.loads(response_body.decode('utf-8'))
             items = result.get('items')
             if items:
-                return render(request, 'watcha/watcha_search.html', {'items': items})
+                high_item = items[0]
+                return render(request, 'watcha/watcha_search.html', {'high_item': high_item , 'items': items})
             else:
                 return render(request, 'watcha/watcha_no_search.html')
 
