@@ -9,6 +9,9 @@ from django.contrib.auth import logout
 from django.views.generic import View
 from .forms import UserForm, LoginForm
 from django.http import HttpResponse
+from django.contrib.auth.models import User
+from watcha.models import Movie
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # Create your views here.
@@ -40,6 +43,16 @@ def search(request):
             items = result.get('items')
             if items:
                 high_item = items[0]
+                for movie in items:
+                    if Movie.objects.filter(title=movie.get('title')):
+                        pass
+                    else:
+                        author = User.objects.get(username='watcha')
+                        title = movie.get('title')
+                        content = movie.get('subtitle')
+                        poster = movie.get('image')
+                        Movie.objects.create(author=author, title=title, content=content, poster=poster)
+                print(Movie.objects.all())
                 return render(request, 'watcha/watcha_search.html', {'high_item': high_item , 'items': items})
             else:
                 return render(request, 'watcha/watcha_no_search.html')
