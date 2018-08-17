@@ -44,11 +44,15 @@ def search(request):
             if items:
                 high_item = items[0]
                 for movie in items:
-                    if Movie.objects.filter(title=movie.get('title')):
+                    title = movie.get('title')
+                    title = title.replace("<b>","")
+                    title = title.replace("</b>","")
+                    if Movie.objects.filter(title=title):
                         pass
                     else:
                         author = User.objects.get(username='watcha')
-                        title = movie.get('title')
+                        title = title
+                        print(title)
                         content = movie.get('subtitle')
                         poster = movie.get('image')
                         Movie.objects.create(author=author, title=title, content=content, poster=poster)
