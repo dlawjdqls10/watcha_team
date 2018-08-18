@@ -22,9 +22,9 @@ class Movie(models.Model):
         return self.title
 
 class Comment(models.Model):
-
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, blank=True, null=True)
-    comment = models.CharField(max_length=200, verbose_name='댓글', blank=True, null=True)
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE, blank=True, null=True)
+    title = models.CharField(max_length=200, verbose_name='영화 제목', blank=True, null=True)
+    comment = models.CharField(max_length=200, verbose_name='이 작품에 대한 생각을 자유롭게 표현해주세요.', blank=True, null=True)
 
     def __str__(self):
         return self.comment

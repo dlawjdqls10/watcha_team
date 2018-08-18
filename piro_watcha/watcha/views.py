@@ -61,20 +61,21 @@ def search(request):
                 return render(request, 'watcha/watcha_no_search.html')
 
 
-def comment_new(request):
+def comment_new(request, title):
     if request.method == 'POST':
-        form = CommentForm(request.POST, request.FILES)
+        form = CommentForm(request.POST)
+        print(request)
         if form.is_valid():
-            comment = Comment()
+            comment = form.save(commit=False)
+            comment.author = request.user
             comment.comment = form.cleaned_data['comment']
-            comment.movie = Movie.objects.get(pk=int(form.cleaned_data['movie']))
+            title=title
+            comment.title = Movie.objects.get(title=title)
             comment.save()
-            return redirect('/watcha/')
+            return redirect('watcha:detail', title=comment.title)
     else:
         form = CommentForm()
-    return render(request, 'watcha/watcha_comment.html', {
-        'form': form,
-    })
+    return render(request, 'watcha/watcha_comment.html', {'form': form})
 
 
 def main(request):

@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from watcha.models import Comment
 from django import forms
 
 def min_length_3_validator(value):
@@ -6,9 +7,11 @@ def min_length_3_validator(value):
         raise forms.ValidationError('3글자 이상 입력하세요.')
 
 
-class CommentForm(forms.Form):
-    comment = forms.CharField(validators=[min_length_3_validator])
-    movie = forms.CharField()
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ['title', 'comment',]
 
 
 class UserForm(forms.ModelForm):

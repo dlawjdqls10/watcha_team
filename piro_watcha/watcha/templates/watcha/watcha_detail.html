@@ -4,6 +4,7 @@
 <head>
 	<title>왓챠</title>
 <link rel="stylesheet" type="text/css" href="{% static 'css/watcha_profile.css' %}">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 <body>
@@ -32,6 +33,7 @@
 		<div class="content">
       {{ movie.title }}
       {{ movie.content }}
+      <a href="{% url 'watcha:comment' movie.title %}" class="top-menu"><span class="glyphicon glyphicon-plus">평가 작성하기!</span></a>
 	  </div>
 </div>
 </div>

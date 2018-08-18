@@ -4,7 +4,7 @@ from . import views
 app_name = 'watcha'
 
 urlpatterns = [
-    path('comment/', views.comment_new),
+    path('comment/<str:title>/', views.comment_new, name='comment'),
     path('', views.main, name='main'),
     path('detail/<str:title>/', views.detail, name='detail'),
     path('search/', views.search, name='search'),
