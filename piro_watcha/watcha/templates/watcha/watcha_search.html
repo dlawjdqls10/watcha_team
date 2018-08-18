@@ -28,7 +28,7 @@
   <div class="content__pack__high">
           <div class="content__movie">
             <div class="content__movie__img">
-              <a href="http://localhost:8000/watcha/comment/">
+              <a href="{% url 'watcha:detail' high_item.title %}">
                 <img src="{{ high_item.image }}" alt="" width="130" height="180">
               </a>
             </div>
@@ -48,7 +48,7 @@
         <div class="content__movie">
           <div class="content__movie__img">
             {{ forloop. }}
-            <a href="http://localhost:8000/watcha/comment/">
+            <a href="{% url 'watcha:detail' item.title %}">
               <img src="{{ item.image }}" alt="" width="130" height="180">
             </a>
           </div>

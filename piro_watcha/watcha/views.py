@@ -19,9 +19,9 @@ def main(request):
     return render(request, 'watcha/watcha_main.html', )
 
 
-def check(request, pk):
-    movie = get_object_or_404(Movie, pk=pk)
-    return render(request, 'watcha/watcha_check.html', {'movie': movie})
+def detail(request, title):
+    movie = get_object_or_404(Movie, title=title)
+    return render(request, 'watcha/watcha_detail.html', {'movie': movie})
 
 
 def search(request):
@@ -41,21 +41,20 @@ def search(request):
             response_body = response.read()
             result = json.loads(response_body.decode('utf-8'))
             items = result.get('items')
+            for item in items:
+                item['title'] = item['title'].replace("<b>","").replace("</b>","")
+            print(items)
             if items:
                 high_item = items[0]
                 for movie in items:
                     title = movie.get('title')
-                    title = title.replace("<b>","")
-                    title = title.replace("</b>","")
                     if Movie.objects.filter(title=title):
                         pass
                     else:
-                        author = User.objects.get(username='watcha')
-                        title = title
-                        print(title)
+                        title = movie.get('title')
                         content = movie.get('subtitle')
                         poster = movie.get('image')
-                        Movie.objects.create(author=author, title=title, content=content, poster=poster)   # 필드 생성/ 제공받는 api 저장
+                        Movie.objects.create(title=title, content=content, poster=poster)   # 필드 생성/ 제공받는 api 저장
                 print(Movie.objects.all())
                 return render(request, 'watcha/watcha_search.html', {'high_item': high_item , 'items': items})
             else:
