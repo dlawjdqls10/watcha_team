@@ -55,7 +55,7 @@ def search(request):
                         print(title)
                         content = movie.get('subtitle')
                         poster = movie.get('image')
-                        Movie.objects.create(author=author, title=title, content=content, poster=poster)
+                        Movie.objects.create(author=author, title=title, content=content, poster=poster)   # 필드 생성/ 제공받는 api 저장
                 print(Movie.objects.all())
                 return render(request, 'watcha/watcha_search.html', {'high_item': high_item , 'items': items})
             else:
@@ -89,10 +89,6 @@ def profile(request):
 def flavor(request):
     return render(request, 'watcha/watcha_flavor.html')
 
-
-
-def newaccount(request):
-    return render(request, 'watcha/watcha_register.html')
 
 
 class UserFormView(View):

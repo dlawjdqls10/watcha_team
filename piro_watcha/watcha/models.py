@@ -18,6 +18,9 @@ class Movie(models.Model):
     rank = models.CharField(max_length=20, verbose_name='순위', blank=True, null=True)
     poster = models.CharField(max_length=200, verbose_name='포스터', blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+
 class Comment(models.Model):
 
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, blank=True, null=True)

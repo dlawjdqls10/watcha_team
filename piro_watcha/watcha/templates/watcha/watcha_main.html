@@ -1,11 +1,11 @@
 {% load static %}
-<!DOCTYPE html>
 <html>
 <head>
   <title>왓챠</title>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="{% static 'css/watcha_main.css' %}">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 <body>
 <div id="root">
@@ -19,11 +19,15 @@
                 <li class="TopNavTabList">
                   <div class="account">
                     {% if user.username %}
-                      <a href="{% url 'watcha:profile' %}"><div class="welcomeuser"><i class="fas fa-user-circle"></i></div></a>
-                      <a href="{% url 'watcha:logout_user' %}"><div id="shadow__logout" class="userlogout">logout</div></a>
+                    <a href="{% url 'watcha:profile' %}">
+                      <div class="welcomeuser"><i class="fas fa-user-circle"></i></div>
+                    </a>
+                    <a href="{% url 'watcha:logout_user' %}">
+                      <div id="shadow__logout" class="userlogout">logout</div>
+                    </a>
                     {% else %}
-                      <a href="{% url 'watcha:login' %}"><span id="shadow__login" class="login">로그인</span></a>
-                      <a href="{% url 'watcha:newaccount' %}"><span id="shadow__register" class="register">회원가입</span></a>
+                    <a href="{% url 'watcha:login' %}"><span id="shadow__login" class="login">로그인</span></a>
+                    <a href="{% url 'watcha:newaccount' %}"><span id="shadow__register" class="register">회원가입</span></a>
                     {% endif %}
 
                   </div>
@@ -49,11 +53,12 @@
                 <div class="MaxWidthGrid">
                   <div class="IndexPageHome">
                     <div class="HomeSearrchInput">
-											<form class="search" action="{% url 'watcha:search' %}" method="GET">
-												<div class="SearchBlock">
-													<input type="search" class="searchinput" id="searchbar" name="q" value label="검색" placeholder="작품, 제목, 배우, 감독을 검색해보세요." autocomplete="off">
-												</div>
-											</form>
+                      <form class="search" action="{% url 'watcha:search' %}" method="GET">
+                        <div class="SearchBlock">
+                          <input type="search" class="searchinput" id="searchbar" name="q" value label="검색"
+                                 placeholder="작품, 제목, 배우, 감독을 검색해보세요." autocomplete="off">
+                        </div>
+                      </form>
                     </div>
                     <section class="Guide">
                       <div class="Grid">
@@ -155,25 +160,33 @@
 </div>
 </div>
 
- <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 <script>
-      $('#shadow__logout').on('mouseenter', OnmouseEnterPhoto);
-      $('#shadow__logout').on('mouseleave', OnmouseLeavePhoto);
-      function OnmouseEnterPhoto() {
-        $('#shadow__logout').css('box-shadow', '4px 4px');}
-      function OnmouseLeavePhoto(){
-        $('#shadow__logout').css('box-shadow', 'none');}
+    $('#shadow__logout').on('mouseenter', OnmouseEnter__logout);
+    $('#shadow__logout').on('mouseleave', OnmouseLeave__logout);
+
+    function OnmouseEnter__logout() {
+        $('#shadow__logout').css('box-shadow', '4px 4px');
+    }
+
+    function OnmouseLeave__logout() {
+        $('#shadow__logout').css('box-shadow', 'none');
+    }
 
 
-      $('#shadow__login').on('mouseenter', OnmouseEnterPhoto);
-      $('#shadow__login').on('mouseleave', OnmouseLeavePhoto);
-      function OnmouseEnterPhoto() {
-        $('#shadow__login').css('color', 'black');}
-      function OnmouseLeavePhoto(){
-        $('#shadow__login').css('color', 'white');}
+    $('#shadow__login').on('mouseenter', OnmouseEnterLogin);
+    $('#shadow__login').on('mouseleave', OnmouseLeaveLogin);
+
+    function OnmouseEnterLogin() {
+        $('#shadow__login').css('color', 'black');
+    }
+
+    function OnmouseLeaveLogin() {
+        $('#shadow__login').css('color', 'white');
+    }
 
 
 
