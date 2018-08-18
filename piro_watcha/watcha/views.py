@@ -69,10 +69,9 @@ def comment_new(request, title):
             comment = form.save(commit=False)
             comment.author = request.user
             comment.comment = form.cleaned_data['comment']
-            title=title
-            comment.title = Movie.objects.get(title=title)
+            comment.movie_name = Movie.objects.get(title=title)
             comment.save()
-            return redirect('watcha:detail', title=comment.title)
+            return redirect('watcha:detail', title=comment.movie_name)
     else:
         form = CommentForm()
     return render(request, 'watcha/watcha_comment.html', {'form': form})
