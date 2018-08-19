@@ -34,8 +34,17 @@
       {{ movie.title }}
       {{ movie.content }}
       <a href="{% url 'watcha:comment' movie.title %}" class="top-menu"><span class="glyphicon glyphicon-plus">평가 작성하기!</span></a>
-	  </div>
-</div>
+      <div class="comment">
+      {% for comment in comment_list %}
+        <br>
+        작성자 : {{ comment.author }}
+        <br>
+        내용 : {{ comment.comment }}
+        <br>
+        <br>
+      {% endfor %}
+      </div>
+    </div>
 </div>
 </div>
 

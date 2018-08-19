@@ -10,7 +10,6 @@ from django.views.generic import View
 from .forms import UserForm, LoginForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from watcha.models import Movie
 from django.core.exceptions import ObjectDoesNotExist
 
 
@@ -21,7 +20,8 @@ def main(request):
 
 def detail(request, title):
     movie = get_object_or_404(Movie, title=title)
-    return render(request, 'watcha/watcha_detail.html', {'movie': movie})
+    comment_list = Comment.objects.filter(movie_name=title)
+    return render(request, 'watcha/watcha_detail.html', {'movie': movie, 'comment_list': comment_list})
 
 
 def search(request):
@@ -69,7 +69,7 @@ def comment_new(request, title):
             comment = form.save(commit=False)
             comment.author = request.user
             comment.comment = form.cleaned_data['comment']
-            comment.movie_name = Movie.objects.get(title=title)
+            comment.movie_name = Movie.objects.get(title=title).title
             comment.save()
             return redirect('watcha:detail', title=comment.movie_name)
     else:
