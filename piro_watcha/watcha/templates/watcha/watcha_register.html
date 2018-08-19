@@ -16,10 +16,10 @@
 	<div class="input__ID">
 		{{ form.username }}
 	</div>
-	<div class="input__ID">
+	<div id = "input__email" class="input__ID">
 		{{ form.email }}
 	</div>
-	<div class="input__PW">
+	<div id = "input__PW" class="input__PW">
 		{{ form.password }}
 	</div>
 	<div class="input__agree">
@@ -52,6 +52,18 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 <script>
+    {#$('#input__ID').on('mouseenter', EnterMouseID);#}
+    {#$('#input__ID').on('mouseleave', LeaveMouseID);#}
+    {##}
+    {#function EnterMouseID() {#}
+    {#    $('#input__ID').css('box-shadow', '10px 10px black');#}
+    {#}#}
+    {##}
+    {#function LeaveMouseID() {#}
+    {#    $('#input__ID').css('box-shadow', 'None');#}
+    {#}#}
+
+
     $('#input__submit').on('mouseenter', EnterMouseSubmit);
     $('#input__submit').on('mouseleave', LeaveMouseSubmit);
     $('#input__submit__FB').on('mouseenter', EnterMouseSubmit__FB);

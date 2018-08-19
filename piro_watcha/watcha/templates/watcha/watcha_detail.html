@@ -1,39 +1,7 @@
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>왓챠</title>
-<link rel="stylesheet" type="text/css" href="{% static 'css/watcha_profile.css' %}">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-</head>
-<body>
-<div class="main">
-
-
-	<div class="nav">
-    <a href="http://localhost:8000/watcha/main/">
-		<div class="nav__watcha">
-			WATCHA
-		</div></a>
-    <form class="search" action="{% url 'watcha:search' %}" method="GET">
-			<div class="header__search">
-  		<span class="search__img"><i class="fas fa-search"></i></span>
-    <input type="search" class="search-bar" name="q" placeholder="작품, 제목, 배우, 감독을 검색해보세요.">
-			</div>
-    </form>
-		<a href="{% url 'watcha:logout_user' %}"><div class="logout">logout</div></a>
-	</div>
-
-
-	<div class="body">
-
-		<div class="pinkimg">
-		</div>
-		<div class="content">
       {{ movie.title }}
       {{ movie.content }}
-      <a href="{% url 'watcha:comment' movie.title %}" class="top-menu"><span class="glyphicon glyphicon-plus">평가 작성하기!</span></a>
+      <a href="{% url 'watcha:comment' movie.title %}" class="top-menu"><span class="glyphicon glyphicon-plus">평가 작성</span></a>
       <div class="comment">
       {% for comment in comment_list %}
         <br>
@@ -41,41 +9,6 @@
         <br>
         내용 : {{ comment.comment }}
         <br>
+        별점 : {{ comment.star }}
         <br>
       {% endfor %}
-      </div>
-    </div>
-</div>
-</div>
-
-
-<div class="footer">
-	<div class="box">
-			<div class="first_line">
-				<div class="box__one">지금까지 <sapn style= color:orange;>★ 412,255,151 개의 평가가</sapn> 쌓였어요.</div>
-				<div class="round__image">
-					<div class="f"><i class="fab fa-facebook-f"></i></div>
-					<div class="t"><i class="fab fa-twitter"></i></div>
-					<div class="b"><i class="fab fa-blogger-b"></i></div>
-				</div>
-			</div>
-
-			<div class="service_first">
-				<span>서비스 이용 약관  |  개인정보 정책</span>
-			</div>
-			<div class="service_second">
-				<span>사업자 등록 번호  |  고객센터 piro@watcha.com</span>
-			</div>
-			<div class="service_third">
-				<span>WATCHA © 2018 by piro_Watcha.</span>
-			</div>
-
-
-		<div class="box__two"></div>
-		<div class="box__three"></div>
-	</div>
-</div>
-
-</div>
-</body>
-</html>
