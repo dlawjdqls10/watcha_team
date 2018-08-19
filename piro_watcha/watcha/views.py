@@ -42,7 +42,7 @@ def search(request):
             result = json.loads(response_body.decode('utf-8'))
             items = result.get('items')
             for item in items:
-                item['title'] = item['title'].replace("<b>","").replace("</b>","")
+                item['title'] = item['title'].replace("<b>", "").replace("</b>", "")
             print(items)
             if items:
                 high_item = items[0]
@@ -54,9 +54,9 @@ def search(request):
                         title = movie.get('title')
                         content = movie.get('subtitle')
                         poster = movie.get('image')
-                        Movie.objects.create(title=title, content=content, poster=poster)   # 필드 생성/ 제공받는 api 저장
+                        Movie.objects.create(title=title, content=content, poster=poster)  # 필드 생성/ 제공받는 api 저장
                 print(Movie.objects.all())
-                return render(request, 'watcha/watcha_search.html', {'high_item': high_item , 'items': items})
+                return render(request, 'watcha/watcha_search.html', {'high_item': high_item, 'items': items, })
             else:
                 return render(request, 'watcha/watcha_no_search.html')
 
@@ -75,7 +75,8 @@ def comment_new(request, title):
             return redirect('watcha:detail', title=comment.movie_name)
     else:
         form = CommentForm()
-    return render(request, 'watcha/watcha_comment.html', {'form': form})
+        movie = get_object_or_404(Movie, title=title)
+    return render(request, 'watcha/watcha_comment.html', {'form': form, 'movie': movie})
 
 
 def main(request):
@@ -88,7 +89,6 @@ def profile(request):
 
 def flavor(request):
     return render(request, 'watcha/watcha_flavor.html')
-
 
 
 class UserFormView(View):
@@ -144,4 +144,3 @@ def logout_user(request):
         "form": form,
     }
     return render(request, 'watcha/watcha_main.html', context)
-
