@@ -19,9 +19,13 @@
 				{{ form.comment }}
 			</div>
 			<div class="star__input">
-				{{ form.star }}
+				<i id = "one" class="fas fa-star"></i>
+				<i id = "two" class="fas fa-star"></i>
+				<i id = "three" class="fas fa-star"></i>
+				<i id = "four" class="fas fa-star"></i>
+				<i id = "five" class="fas fa-star"></i>
 			</div>
-			<button type="submit">평가하기</button>
+			<button id = "button" type="submit">평가하기</button>
 			</form>
  		</div>
  	</div>
@@ -29,4 +33,83 @@
 </form>
 
 
+
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $('#one').on('mouseenter', mouseEnterPhoto_1);
+    $('#two').on('mouseenter', mouseEnterPhoto_2);
+    $('#three').on('mouseenter', mouseEnterPhoto_3);
+    $('#four').on('mouseenter', mouseEnterPhoto_4);
+    $('#five').on('mouseenter', mouseEnterPhoto_5);
+
+    $('#one').on('mouseleave', mouseLeavePhoto_1);
+    $('#two').on('mouseleave', mouseLeavePhoto_2);
+    $('#three').on('mouseleave', mouseLeavePhoto_3);
+    $('#four').on('mouseleave', mouseLeavePhoto_4);
+    $('#five').on('mouseleave', mouseLeavePhoto_5);
+
+// 별 1개
+    function mouseEnterPhoto_1() {
+    	$('#one').css('color', 'yellow');
+    }
+    function mouseLeavePhoto_1() {
+    	$('#one').css('color', 'gray');
+    }
+// 별2개 
+	function mouseEnterPhoto_2() {
+    	$('#one').css('color', 'yellow');
+    	$('#two').css('color', 'yellow');
+    }
+    function mouseLeavePhoto_2() {
+    	$('#one').css('color', 'gray');
+    	$('#two').css('color', 'gray');
+    }
+// 별3개 
+	function mouseEnterPhoto_3() {
+    	$('#one').css('color', 'yellow');
+    	$('#two').css('color', 'yellow');
+    	$('#three').css('color', 'yellow');
+    }
+    function mouseLeavePhoto_3() {
+    	$('#one').css('color', 'gray');
+    	$('#two').css('color', 'gray');
+    	$('#three').css('color', 'gray');
+    }
+// 별4개
+	function mouseEnterPhoto_4() {
+    	$('#one').css('color', 'yellow');
+    	$('#two').css('color', 'yellow');
+    	$('#three').css('color', 'yellow');
+    	$('#four').css('color', 'yellow');
+    }
+    function mouseLeavePhoto_4() {
+    	$('#one').css('color', 'gray');
+    	$('#two').css('color', 'gray');
+    	$('#three').css('color', 'gray');
+    	$('#four').css('color', 'gray');
+    }
+// 별5개 
+	function mouseEnterPhoto_5() {
+    	$('#one').css('color', 'yellow');
+    	$('#two').css('color', 'yellow');
+    	$('#three').css('color', 'yellow');
+    	$('#four').css('color', 'yellow');
+    	$('#five').css('color', 'yellow');
+    }
+    function mouseLeavePhoto_5() {
+    	$('#one').css('color', 'gray');
+    	$('#two').css('color', 'gray');
+    	$('#three').css('color', 'gray');
+    	$('#four').css('color', 'gray');
+    	$('#five').css('color', 'gray');
+    }
+
+
+
+</script>
+ 
 

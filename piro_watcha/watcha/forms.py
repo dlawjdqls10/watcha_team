@@ -8,6 +8,7 @@ def min_length_3_validator(value):
 
 
 class CommentForm(forms.ModelForm):
+    comment = forms.CharField(widget=forms.TextInput({"placeholder": "자유롭게 코멘트를 입력하세요 :)"}))
 
     class Meta:
         model = Comment
