@@ -22,7 +22,7 @@
                     <a href="{% url 'watcha:profile' %}">
                       <div class="welcomeuser"><i class="fas fa-user-circle"></i></div>
                     </a>
-                    <a href="{% url 'watcha:logout_user' %}">
+                      <a onclick="alert('로그아웃되었습니다.') "href="{% url 'watcha:logout_user' %}">
                       <div id="shadow__logout" class="userlogout">logout</div>
                     </a>
                     {% else %}
