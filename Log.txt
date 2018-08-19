@@ -6,7 +6,8 @@
 2018-08-14 login/회원가입 로직짜고 구현
 2018-08-15 search 부분 프론트 예쁘게 만들기/ login 후 프로필에 username 띄우기
 2018-08-16 logout 구현/ main,profile 에서 logout 하기/ profile page 에서 username 보여주기 / profile 페이지 검색창 예쁘게하기
-
+2018-08-17~18 api 에서 끌어온 영화 정보 DB 에 저장하기 / 각각 영화 DB 이용해서 영화 detail 페이지 구현
+2018-08-19 detail page 에 평가기능 추가 / comment page 프론트 
 
 
 main 페이지에서 바로 검색 가능하게! (클릭하면 search 페이지로 안가고)/
