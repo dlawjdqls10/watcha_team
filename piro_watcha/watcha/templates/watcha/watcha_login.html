@@ -15,14 +15,14 @@
 
       <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="input__ID">
+        <div id="input__ID" class="input__ID">
           {{ form.username }}
         </div>
-        <div class="input__PW">
+        <div id="input__PW" class="input__PW">
           {{ form.password }}
         </div>
-        <div class="input__submit">
-           <button type='submit'> 로그인</button>
+        <div class="input__submit" >
+          <button id="input__submit"  type='submit'> 로그인</button>
         </div>
       </form>
     </div>
@@ -32,16 +32,39 @@
         <a href="#"><span>비밀번호를 잊어버리셨나요?</span></a>
       </div>
       <div class="no__ID">
-        계정이 없으신가요? <a href="#"><span>회원가입</span></a>
+        계정이 없으신가요? <a href="{% url 'watcha:newaccount' %}"><span>회원가입</span></a>
       </div>
     </div>
     <div class="footer">
       <div class="line"></div>
     </div>
     <div class="input__submitFB">
-      <button type='submit'> FACEBOOK 으로 로그인</button>
+      <button id = "input__submit__FB" type='submit'> FACEBOOK 으로 로그인</button>
     </div>
   </div>
 </div>
 </body>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script>
+    $('#input__submit').on('mouseenter', EnterMouseSubmit);
+    $('#input__submit').on('mouseleave', LeaveMouseSubmit);
+    $('#input__submit__FB').on('mouseenter', EnterMouseSubmit__FB);
+    $('#input__submit__FB').on('mouseleave', LeaveMouseSubmit__FB);
+
+    function EnterMouseSubmit() {
+        $('#input__submit').css('box-shadow', '5px 5px gray');
+    }
+    function LeaveMouseSubmit() {
+        $('#input__submit').css('box-shadow', 'None');
+    }
+    function EnterMouseSubmit__FB() {
+        $('#input__submit__FB').css('box-shadow', '5px 5px gray');
+    }
+    function LeaveMouseSubmit__FB() {
+        $('#input__submit__FB').css('box-shadow', 'None');
+    }
+</script>
 </html>
