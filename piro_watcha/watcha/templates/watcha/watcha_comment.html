@@ -9,7 +9,7 @@
  <div class="main__helper">
  	<div class="main">
  		<div class="title">
- 			<i class="fas fa-times"></i>
+ 			<a href="#"><i class="fas fa-times"></i></a>
  			<span>{{ movie.title }}</span>
  		</div>
  		<div class="comment">
@@ -18,6 +18,9 @@
  			<div class="comment__input">
 				{{ form.comment }}
 			</div>
+			<div class="comment__star">
+				{{ form.star }}
+			</div>
 			<div class="star__input">
 				<i id = "one" class="fas fa-star"></i>
 				<i id = "two" class="fas fa-star"></i>
@@ -25,6 +28,8 @@
 				<i id = "four" class="fas fa-star"></i>
 				<i id = "five" class="fas fa-star"></i>
 			</div>
+
+
 			<button id = "button" type="submit">평가하기</button>
 			</form>
  		</div>
@@ -40,44 +45,66 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 <script type="text/javascript">
+ // 마우스 올릴 때
     $('#one').on('mouseenter', mouseEnterPhoto_1);
     $('#two').on('mouseenter', mouseEnterPhoto_2);
     $('#three').on('mouseenter', mouseEnterPhoto_3);
     $('#four').on('mouseenter', mouseEnterPhoto_4);
     $('#five').on('mouseenter', mouseEnterPhoto_5);
 
-    $('#one').on('mouseleave', mouseLeavePhoto_1);
-    $('#two').on('mouseleave', mouseLeavePhoto_2);
-    $('#three').on('mouseleave', mouseLeavePhoto_3);
-    $('#four').on('mouseleave', mouseLeavePhoto_4);
-    $('#five').on('mouseleave', mouseLeavePhoto_5);
+// 버튼 그림자 
+    $('#button').on('mouseenter', mouseEnterPhoto_B);
+    $('#button').on('mouseleave', mouseLeavePhoto_B);
+
+// 평가 점수 넣기
+    $('#one').on('click', click_one);
+    $('#two').on('click', click_two);
+    $('#three').on('click', click_three);
+    $('#four').on('click', click_four);
+    $('#five').on('click', click_five);
+
+    function click_one() {
+		$('#star_id').val(1);
+    }
+    function click_two() {
+		$('#star_id').val(2);
+    }
+    function click_three() {
+		$('#star_id').val(3);
+    }
+    function click_four() {
+		$('#star_id').val(4);
+    }
+    function click_five() {
+		$('#star_id').val(5);
+    }
+    
+
 
 // 별 1개
     function mouseEnterPhoto_1() {
     	$('#one').css('color', 'yellow');
+    	$('#two').css('color', 'gray');
+    	$('#three').css('color', 'gray');
+    	$('#four').css('color', 'gray');
+    	$('#five').css('color', 'gray');
     }
-    function mouseLeavePhoto_1() {
-    	$('#one').css('color', 'gray');
-    }
+
 // 별2개 
 	function mouseEnterPhoto_2() {
     	$('#one').css('color', 'yellow');
     	$('#two').css('color', 'yellow');
-    }
-    function mouseLeavePhoto_2() {
-    	$('#one').css('color', 'gray');
-    	$('#two').css('color', 'gray');
+    	$('#three').css('color', 'gray');
+    	$('#four').css('color', 'gray');
+    	$('#five').css('color', 'gray');
     }
 // 별3개 
 	function mouseEnterPhoto_3() {
     	$('#one').css('color', 'yellow');
     	$('#two').css('color', 'yellow');
     	$('#three').css('color', 'yellow');
-    }
-    function mouseLeavePhoto_3() {
-    	$('#one').css('color', 'gray');
-    	$('#two').css('color', 'gray');
-    	$('#three').css('color', 'gray');
+    	$('#four').css('color', 'gray');
+    	$('#five').css('color', 'gray');
     }
 // 별4개
 	function mouseEnterPhoto_4() {
@@ -85,12 +112,8 @@
     	$('#two').css('color', 'yellow');
     	$('#three').css('color', 'yellow');
     	$('#four').css('color', 'yellow');
-    }
-    function mouseLeavePhoto_4() {
-    	$('#one').css('color', 'gray');
-    	$('#two').css('color', 'gray');
-    	$('#three').css('color', 'gray');
-    	$('#four').css('color', 'gray');
+    	$('#five').css('color', 'gray');
+
     }
 // 별5개 
 	function mouseEnterPhoto_5() {
@@ -100,15 +123,16 @@
     	$('#four').css('color', 'yellow');
     	$('#five').css('color', 'yellow');
     }
-    function mouseLeavePhoto_5() {
-    	$('#one').css('color', 'gray');
-    	$('#two').css('color', 'gray');
-    	$('#three').css('color', 'gray');
-    	$('#four').css('color', 'gray');
-    	$('#five').css('color', 'gray');
-    }
 
 
+// button shadow
+	function mouseEnterPhoto_B() {
+		$('#button').css('box-shadow', '5px 5px #ff6090');
+	}
+
+	function mouseLeavePhoto_B() {
+		$('#button').css('box-shadow', 'none');
+	}
 
 </script>
  

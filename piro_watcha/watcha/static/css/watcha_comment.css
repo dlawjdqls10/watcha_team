@@ -70,6 +70,13 @@ ol, ul{
 	width: 430px;
 }
 
+#star_id {
+	font-size: 20px;
+	width: 10px;
+	margin-left: 238px;
+	margin-top: 20px;
+	border: none;
+}
 
 .star__input i {
 	margin-top: 30px;
@@ -81,18 +88,8 @@ ol, ul{
 button {
 	border: none;
 	margin-top: 80px;
-	margin-left: 210px;
+	margin-left: 200px;
+	width: 100px;
+	height: 40px;
+	border-radius: 15px;
 }
-
-/*.title {
-    margin-top: 20px;
-    margin-bottom: 50px;
-    text-align: center;
-    font-size: 35px;
-}
-
-.table {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}*/
