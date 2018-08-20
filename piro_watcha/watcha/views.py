@@ -22,7 +22,7 @@ def detail(request, title):
     movie = get_object_or_404(Movie, title=title)
     comment_list = Comment.objects.filter(movie_name=title)
     score_list = Score.objects.filter(movie_name=title)
-    return render(request, 'watcha/watcha_detail.html', {'movie': movie, 'comment_list': comment_list})
+    return render(request, 'watcha/watcha_detail.html', {'movie': movie, 'comment_list': comment_list, 'score_list': score_list})
 
 
 def search(request):

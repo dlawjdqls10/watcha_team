@@ -71,6 +71,7 @@
 
       <div class="score">
       {% for score in score_list %}
+        <h1>평점!!</h1>
         <br>
         작성자 : {{ score.author }}
         <a class="top-menu" href="{% url 'watcha:score_edit' movie.title %}"><span class="glyphicon glyphicon-pencil">수정하기</span></a>
