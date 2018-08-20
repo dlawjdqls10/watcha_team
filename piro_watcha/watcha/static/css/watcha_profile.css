@@ -48,17 +48,21 @@ ol, ul{
 }
 
 input {
-	position: relative;
 	background-color: #E5E5E5;
-	width: 480px;
-	height: 45px;
+	width: 500px;
+	height: 40px;
 	vertical-align: middle;
-	margin-right: 32px;
+	margin-right: 25px;
 	margin-top: 12px;
-	border-radius: 10px;
-	font-size: 16px;
-	padding-left: 50px;
+	border-radius: 15px;
+	padding-left: 35px;
 	border: none;
+}
+
+.search__img {
+	position: relative;
+	top: 8px;
+	left: 30px;
 }
 
 .mag {

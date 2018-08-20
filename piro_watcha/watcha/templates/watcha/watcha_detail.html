@@ -1,5 +1,91 @@
 {% load static %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'css/watcha_detail.css' %}">
+
+  <div class="nav">
+
+    <a href="{% url 'watcha:main' %}"><div class="nav__watcha">WATCHA</div></a>
+
+
+    <div class="nav__search">
+      <form class="search" action="{% url 'watcha:search' %}" method="GET">
+        <div class="nav__search">
+          <span class="nav__search__img"><i class="fas fa-search"></i></span>
+            <input type="search" class="search-bar" name="q" placeholder="작품, 제목, 배우, 감독을 검색해보세요.">
+        </div>
+      </form>
+    </div>
+
+    <a href="{% url 'watcha:profile' %}">
+    <div class="nav__profile">
+      <i class="fas fa-user-circle"></i>
+    </div>
+    </a>
+
+  </div>
+
+<div class="main__content_flex">   
+  <div class="main__content">
+    <div class="main__title">
       {{ movie.title }}
+    </div>
+
+    <div class="main__poster">
+      <img src="{{ movie.poster }}">
+    </div>
+    <div class="main__info">
+     <!--  작가: 
+      출연진:
+      줄거리: -->
+    </div>
+    <div class="comment__new">
+           <a href="{% url 'watcha:comment' movie.title %}" class="top-menu"><span class="glyphicon glyphicon-plus">코멘트 작성하기</span></a>
+    </div>
+    <div class="liner">
+       
+    </div>
+    <div class="comment">
+      {% for comment in comment_list %}
+      <div class="comment__box">
+        <br>
+        작성자 : {{ comment.author }}
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        내용 : {{ comment.comment }}
+        <br>
+        <br>
+        <span class="star"><i class="fas fa-star"></i> {{ comment.star }}</span>
+        <br>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  {{ movie.title }}
       {{ movie.content }}
       <a href="{% url 'watcha:comment' movie.title %}" class="top-menu"><span class="glyphicon glyphicon-plus">평가 작성</span></a>
       <div class="comment">
@@ -11,4 +97,4 @@
         <br>
         별점 : {{ comment.star }}
         <br>
-      {% endfor %}
+      {% endfor %} -->
