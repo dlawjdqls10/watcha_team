@@ -30,6 +30,11 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment
 
+class Score(models.Model):
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE, blank=True, null=True)
+    movie_name = models.CharField(max_length=200, verbose_name='평점', blank=True, null=True)
+    star = models.IntegerField(verbose_name='별점 매기기', blank=True, null=True)
+
 class Genre(models.Model):
     name = models.CharField(max_length=10)
 

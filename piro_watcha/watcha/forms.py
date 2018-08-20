@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from watcha.models import Comment
+from watcha.models import Comment, Score
 from django import forms
 
 
@@ -18,6 +18,17 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['comment', 'star', ]
+
+class ScoreForm(forms.ModelForm):
+    star = forms.CharField(widget=forms.TextInput(attrs={'id': 'star_id'}))
+
+    # attrs = {'class': 'some_class',
+    #          'id': 'some_id'})
+
+    class Meta:
+        model = Score
+        fields = ['star', ]
+
 
 
 class UserForm(forms.ModelForm):

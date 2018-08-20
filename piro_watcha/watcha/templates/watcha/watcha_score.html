@@ -1,0 +1,38 @@
+{% load static %}
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" 
+  href="{% static 'css/watcha_comment.css' %}">
+
+ <div class="main__helper">
+ 	<div class="main">
+ 		<div class="title">
+ 			<a href="#"><i class="fas fa-times"></i></a>
+ 			<span>{{ movie.title }}</span>
+ 		</div>
+ 		<div class="comment">
+ 			<form action="" method="post" enctype="multipart/form-data">
+  			{% csrf_token %}
+ 			<div class="comment__input">
+				{{ form.comment }}
+			</div>
+			<div class="comment__star">
+				{{ form.star }}
+			</div>
+			<div class="star__input">
+				<i id = "one" class="fas fa-star"></i>
+				<i id = "two" class="fas fa-star"></i>
+				<i id = "three" class="fas fa-star"></i>
+				<i id = "four" class="fas fa-star"></i>
+				<i id = "five" class="fas fa-star"></i>
+			</div>
+
+
+			<button id = "button" type="submit">평가하기</button>
+			</form>
+ 		</div>
+ 	</div>
+  </div>
+</form>

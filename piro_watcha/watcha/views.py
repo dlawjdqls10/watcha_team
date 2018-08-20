@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Movie, Comment
-from .forms import CommentForm
+from .models import Movie, Comment, Score
+from .forms import CommentForm, ScoreForm
 import urllib.request
 import json
 from django.views import generic
@@ -60,14 +60,13 @@ def search(request):
             else:
                 return render(request, 'watcha/watcha_no_search.html')
 
-
+#코멘트 생성, 수정, 삭제
 def comment_new(request, title):
     if Comment.objects.filter(movie_name=title, author=request.user):
         return redirect('watcha:comment_edit', title=title)
     else:
         if request.method == 'POST':
             form = CommentForm(request.POST)
-            print(request)
             if form.is_valid():
                 comment = form.save(commit=False)
                 comment.author = request.user
@@ -103,6 +102,47 @@ def comment_delete(request, pk):
     comment.title = comment.movie_name
     comment.delete()
     return redirect('watcha:detail', title=comment.title)
+
+# 평점 추가, 수정, 삭제
+def score_new(request, title):
+    if Score.objects.filter(movie_name=title, author=request.user):
+        return redirect('watcha:score_edit', title=title)
+    else:
+        if request.method == 'POST':
+            form = ScoreForm(request.POST)
+            if form.is_valid():
+                score = form.save(commit=False)
+                score.author = request.user
+                score.star = form.cleaned_data['star']
+                score.movie_name = title
+                score.save()
+                return redirect('watcha:score', title=score.movie_name)
+        else:
+            form = ScoreForm()
+            movie = get_object_or_404(Movie, title=title)
+        return render(request, 'watcha/watcha_score.html', {'form': form, 'movie': movie})
+
+def score_edit(request, title):
+    score = get_object_or_404(Score, movie_name=title, author=request.user)
+    if request.method == "POST":
+        form = ScoreForm(request.POST, instance=score)
+        if form.is_valid():
+            score = form.save(commit=False)
+            score.author = request.user
+            score.star = form.cleaned_data['star']
+            score.movie_name = title
+            score.save()
+            return redirect('watcha:detail', title=score.movie_name)
+    else:
+        form = ScoreForm(instance=score)
+        movie = get_object_or_404(Movie, title=title)
+    return render(request, 'watcha/watcha_score.html', {'form': form, 'movie': movie})
+
+def score_delete(request, pk):
+    score = get_object_or_404(Score, pk=pk)
+    score.title = score.movie_name
+    score.delete()
+    return redirect('watcha:detail', title=score.title)
 
 
 
