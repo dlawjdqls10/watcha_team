@@ -38,8 +38,8 @@
       출연진:
       줄거리: -->
     </div>
-    <div class="comment__new">
-           <a href="{% url 'watcha:comment' movie.title %}" class="top-menu"><span class="glyphicon glyphicon-plus">코멘트 작성하기</span></a>
+    <div id = "comment" class="comment__new">
+           <a href="{% url 'watcha:comment' movie.title %}" class="top-menu"><span id="comment__s" class="glyphicon glyphicon-plus">코멘트 작성하기</span></a>
     </div>
     <div class="liner">
        
@@ -66,7 +66,26 @@
   </div>
 </div>
 
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
 
+  $('#comment').on('mouseenter', Mouseenter);
+  $('#comment').on('mouseleave', Mouseleave);
+
+  function Mouseenter() {
+    $('#comment').css('box-shadow', '7px 7px #e1e1e1');
+    $('#comment__s').css('color', 'black');
+  }
+
+   function Mouseleave() {
+    $('#comment').css('box-shadow', 'none');
+    $('#comment__s').css('color', 'white');
+  }
+
+</script>
 
 
 
