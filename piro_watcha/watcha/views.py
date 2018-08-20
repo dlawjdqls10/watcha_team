@@ -98,6 +98,13 @@ def comment_edit(request, title):
         movie = get_object_or_404(Movie, title=title)
     return render(request, 'watcha/watcha_comment.html', {'form': form, 'movie': movie})
 
+def comment_delete(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.title = comment.movie_name
+    comment.delete()
+    return redirect('watcha:detail', title=comment.title)
+
+
 
 def main(request):
     return render(request, 'watcha/watcha_main.html')
