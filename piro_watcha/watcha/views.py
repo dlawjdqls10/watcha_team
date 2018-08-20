@@ -62,9 +62,29 @@ def search(request):
 
 
 def comment_new(request, title):
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        print(request)
+    if Comment.objects.get(movie_name=title, author=request.user):
+        return redirect('watcha:comment_edit', title=title)
+    else:
+        if request.method == 'POST':
+            form = CommentForm(request.POST)
+            print(request)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.author = request.user
+                comment.comment = form.cleaned_data['comment']
+                comment.star = form.cleaned_data['star']
+                comment.movie_name = Movie.objects.get(title=title).title
+                comment.save()
+                return redirect('watcha:detail', title=comment.movie_name)
+        else:
+            form = CommentForm()
+            movie = get_object_or_404(Movie, title=title)
+        return render(request, 'watcha/watcha_comment.html', {'form': form, 'movie': movie})
+
+def comment_edit(request, title):
+    comment = get_object_or_404(Comment, movie_name=title, author=request.user)
+    if request.method == "POST":
+        form = CommentForm(request.POST, instance=comment)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.author = request.user
@@ -74,7 +94,7 @@ def comment_new(request, title):
             comment.save()
             return redirect('watcha:detail', title=comment.movie_name)
     else:
-        form = CommentForm()
+        form = CommentForm(instance=comment)
         movie = get_object_or_404(Movie, title=title)
     return render(request, 'watcha/watcha_comment.html', {'form': form, 'movie': movie})
 

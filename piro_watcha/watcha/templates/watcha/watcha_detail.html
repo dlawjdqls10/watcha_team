@@ -49,6 +49,7 @@
       <div class="comment__box">
         <br>
         작성자 : {{ comment.author }}
+        <a class="top-menu" href="{% url 'watcha:comment_edit' movie.title %}"><span class="glyphicon glyphicon-pencil">수정하기</span></a>
         <br>
         <br>
         <br>

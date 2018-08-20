@@ -5,6 +5,7 @@ app_name = 'watcha'
 
 urlpatterns = [
     path('comment/<str:title>/', views.comment_new, name='comment'),
+    path('comment_edit/<str:title>/', views.comment_edit, name='comment_edit'),
     path('', views.main, name='main'),
     path('detail/<str:title>/', views.detail, name='detail'),
     path('search/', views.search, name='search'),
