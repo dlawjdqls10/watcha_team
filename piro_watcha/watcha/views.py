@@ -62,7 +62,7 @@ def search(request):
 
 
 def comment_new(request, title):
-    if Comment.objects.get(movie_name=title, author=request.user):
+    if Comment.objects.filter(movie_name=title, author=request.user):
         return redirect('watcha:comment_edit', title=title)
     else:
         if request.method == 'POST':

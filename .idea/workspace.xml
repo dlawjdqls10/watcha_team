@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebb471d3-5fe2-4caa-9515-dee448bf6401" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/piro_watcha/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/piro_watcha/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/piro_watcha/watcha/templates/watcha/watcha_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/piro_watcha/watcha/templates/watcha/watcha_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/piro_watcha/watcha/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/piro_watcha/watcha/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/piro_watcha/watcha/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/piro_watcha/watcha/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/piro_watcha/watcha/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
-              <caret line="85" column="25" selection-start-line="85" selection-start-column="25" selection-end-line="85" selection-end-column="25" />
+              <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
@@ -273,8 +272,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.3289689" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32569557" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2655068" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32569557" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2655068" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32980332" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -579,7 +578,7 @@
     <entry file="file://$PROJECT_DIR$/piro_watcha/watcha/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
-          <caret line="85" column="25" selection-start-line="85" selection-start-column="25" selection-end-line="85" selection-end-column="25" />
+          <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
