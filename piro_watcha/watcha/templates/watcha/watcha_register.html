@@ -13,10 +13,12 @@
   <form action="" method="post" enctype="multipart/form-data">
   {% csrf_token %}
 	<div class="input">
+		<span id = "val__ID">10자리이상 입력하세요</span>
 	<div class="input__ID">
 		{{ form.username }}
 	</div>
-	<div id = "input__email" class="input__ID">
+		<span id = "val__email">10자리이상 입력하세요</span>
+	<div class="input__ID">
 		{{ form.email }}
 	</div>
 	<div id = "input__PW" class="input__PW">
@@ -52,16 +54,25 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 <script>
-    {#$('#input__ID').on('mouseenter', EnterMouseID);#}
-    {#$('#input__ID').on('mouseleave', LeaveMouseID);#}
-    {##}
-    {#function EnterMouseID() {#}
-    {#    $('#input__ID').css('box-shadow', '10px 10px black');#}
-    {#}#}
-    {##}
-    {#function LeaveMouseID() {#}
-    {#    $('#input__ID').css('box-shadow', 'None');#}
-    {#}#}
+  document.onkeydown=function() {
+   if(event.srcElement.type != "text" && event.srcElement.type != "textarea") {
+    if(event.keyCode==8) return false;
+  }}
+
+    $('#username_id').on('keydown', val__ID);
+
+    function val__ID() {
+    	var textLength = $('#username_id').val().length
+    	console.log(textLength)
+    	if (textLength < 8) {
+    		$('#val__ID').css('color', '#ff2f6e;');
+    	}
+    }
+
+
+    
+
+
 
 
     $('#input__submit').on('mouseenter', EnterMouseSubmit);

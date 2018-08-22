@@ -14,7 +14,6 @@ urlpatterns = [
     path('detail/<str:title>/', views.detail, name='detail'),
     path('search/', views.search, name='search'),
     path('profile/', views.profile, name='profile'),
-    path('main/', views.main, name='main'),
     path('flavor/', views.flavor, name='flavor'),
     path('loginpage/', views.loginpage, name='login'),
     path('newaccount/', views.UserFormView.as_view(), name='newaccount'),

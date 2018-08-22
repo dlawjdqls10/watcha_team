@@ -11,21 +11,43 @@ from .forms import UserForm, LoginForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
+from django.core import serializers
+import json
+from django.http import JsonResponse
+from django.core.serializers.json import DjangoJSONEncoder
+
+# json_serializer = serializers.get_serializer("json")()
+# auto_box = json_serializer.serialize(movie_list, ensure_ascii=False)
 
 
 # Create your views here.
+
+box = []
+for a in Movie.objects.all():
+    box.append(a.title)
+
+
 def main(request):
-    return render(request, 'watcha/watcha_main.html', )
+    comment_num = Comment.objects.count()
+    print(comment_num)
+    print('1983798237992')
+    return render(request, 'watcha/watcha_main.html', {'comment_num': comment_num})
 
 
 def detail(request, title):
+    comment_num = Comment.objects.count()
     movie = get_object_or_404(Movie, title=title)
     comment_list = Comment.objects.filter(movie_name=title)
     score_list = Score.objects.filter(movie_name=title)
-    return render(request, 'watcha/watcha_detail.html', {'movie': movie, 'comment_list': comment_list, 'score_list': score_list})
+    return render(request, 'watcha/watcha_detail.html',
+                  {'movie': movie, 'comment_list': comment_list, 'score_list': score_list, 'count': comment_num})
 
 
 def search(request):
+    list_movie = []
+    for a in Movie.objects.all():
+        list_movie.append(a.title)
+
     if request.method == 'GET':
         client_id = "Qecl29vHRGgGNd4hjiov"
         client_secret = "XGZwdGHHfy"
@@ -56,12 +78,16 @@ def search(request):
                         content = movie.get('subtitle')
                         poster = movie.get('image')
                         Movie.objects.create(title=title, content=content, poster=poster)  # 필드 생성/ 제공받는 api 저장
-                print(Movie.objects.all())
-                return render(request, 'watcha/watcha_search.html', {'high_item': high_item, 'items': items, })
+                print(box)
+                # json_serializer = serializers.get_serializer("json")()
+                # movie_json = json_serializer.serialize(list_movie, ensure_ascii=False)
+                return render(request, 'watcha/watcha_search.html',
+                              {'high_item': high_item, 'items': items})
             else:
                 return render(request, 'watcha/watcha_no_search.html')
 
-#코멘트 생성, 수정, 삭제
+
+# 코멘트 생성, 수정, 삭제
 def comment_new(request, title):
     if Comment.objects.filter(movie_name=title, author=request.user):
         return redirect('watcha:comment_edit', title=title)
@@ -81,6 +107,7 @@ def comment_new(request, title):
             movie = get_object_or_404(Movie, title=title)
         return render(request, 'watcha/watcha_comment.html', {'form': form, 'movie': movie})
 
+
 def comment_edit(request, title):
     comment = get_object_or_404(Comment, movie_name=title, author=request.user)
     if request.method == "POST":
@@ -98,11 +125,13 @@ def comment_edit(request, title):
         movie = get_object_or_404(Movie, title=title)
     return render(request, 'watcha/watcha_comment.html', {'form': form, 'movie': movie})
 
+
 def comment_delete(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.title = comment.movie_name
     comment.delete()
     return redirect('watcha:detail', title=comment.title)
+
 
 # 평점 추가, 수정, 삭제
 def score_new(request, title):
@@ -123,6 +152,7 @@ def score_new(request, title):
             movie = get_object_or_404(Movie, title=title)
         return render(request, 'watcha/watcha_score.html', {'form': form, 'movie': movie})
 
+
 def score_edit(request, title):
     score = get_object_or_404(Score, movie_name=title, author=request.user)
     if request.method == "POST":
@@ -139,16 +169,12 @@ def score_edit(request, title):
         movie = get_object_or_404(Movie, title=title)
     return render(request, 'watcha/watcha_score.html', {'form': form, 'movie': movie})
 
+
 def score_delete(request, pk):
     score = get_object_or_404(Score, pk=pk)
     score.title = score.movie_name
     score.delete()
     return redirect('watcha:detail', title=score.title)
-
-
-
-def main(request):
-    return render(request, 'watcha/watcha_main.html')
 
 
 def profile(request):

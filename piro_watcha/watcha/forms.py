@@ -19,6 +19,7 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['comment', 'star', ]
 
+
 class ScoreForm(forms.ModelForm):
     star = forms.CharField(widget=forms.TextInput(attrs={'id': 'star_id'}))
 
@@ -30,11 +31,11 @@ class ScoreForm(forms.ModelForm):
         fields = ['star', ]
 
 
-
 class UserForm(forms.ModelForm):
-    username = forms.CharField(widget=forms.TextInput({"placeholder": "아이디"}))
+    # username = forms.CharField(widget=forms.TextInput({"placeholder": "아이디"}))
     email = forms.CharField(widget=forms.TextInput({"placeholder": "이메일"}))
     password = forms.CharField(widget=forms.PasswordInput({"placeholder": "비밀번호"}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'id': 'username_id', 'placeholder': '아이디'}))
 
     class Meta:
         model = User
