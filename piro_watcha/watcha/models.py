@@ -35,8 +35,8 @@ class Score(models.Model):
     movie_name = models.CharField(max_length=200, verbose_name='영화 제목', blank=True, null=True)
     star = models.IntegerField(verbose_name='별점 매기기', blank=True, null=True)
 
-    def __int__(self):
-        return self.star
+    def __str__(self):
+        return self.movie_name
 
 class Genre(models.Model):
     name = models.CharField(max_length=10)
